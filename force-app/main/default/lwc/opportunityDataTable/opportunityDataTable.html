@@ -1,0 +1,14 @@
+<template>
+    <div style="height: 300px;">
+        <lightning-datatable
+        class= "table"
+        key-field="id"
+        data={opportunities}
+        show-row-number-column
+        row-number-offset={rowOffset}
+        columns={columns}
+        onsave={handleSave}
+    >
+    </lightning-datatable>
+    </div>
+</template>

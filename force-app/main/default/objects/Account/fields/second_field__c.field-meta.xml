@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>second_field__c</fullName>
+    <externalId>false</externalId>
+    <formula>CASE(
+      TEXT(frist_picklist__c) ,
+      &apos;value1&apos;, &apos;1&apos;, 
+      &apos;value2&apos;, &apos;2&apos;,
+      &apos;value3&apos;, &apos;3&apos;,
+      &apos;value4&apos;, &apos;4&apos;,
+      &apos;value5&apos;, &apos;5&apos;,
+      &apos;0&apos;
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>second field</label>
+    <required>false</required>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

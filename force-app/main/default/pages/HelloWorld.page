@@ -1,0 +1,45 @@
+<apex:page standardController="Account" extensions="MyControllerExtension">
+    <script type="text/javascript">
+        function selectAllCheckboxes(obj,receivedInputID){
+            var inputCheckBox = document.getElementsByTagName("input");                  
+            for(var i=0; i<inputCheckBox.length; i++){          
+                if(inputCheckBox[i].id.indexOf(receivedInputID)!=-1){                                     
+                    inputCheckBox[i].checked = obj.checked;
+                }
+            }
+        }
+    </script>
+    {!greeting} <p/>
+
+    <h1>Hello World</h1>
+    <apex:pageBlock title="Account Summary">
+        <apex:pageBlockSection >
+        	Name: {! Account.Name } <br/>
+            Phone: {! Account.Phone } <br/>
+            Industry: {! Account.Industry } <br/>
+            Revenue: {! Account.AnnualRevenue } <br/>
+            Active: {!Account.Active__c}
+
+        </apex:pageBlockSection>
+        <apex:pageBlockSection >
+            <apex:form >
+                <apex:inputField value="{!anAccount.name}"/> <p/>
+                <apex:commandButton value="Save" action="{!saveAccount}"/>
+            </apex:form>
+        </apex:pageBlockSection>
+        <apex:pageBlockSection >
+            <apex:form >
+                <apex:pageBlockTable value="{!accountsWrapper}" var="aWrapp" id="table" title="All Opportunities">
+                    <apex:column >    
+                        <apex:facet name="header">
+                            <apex:inputCheckbox onclick="selectAllCheckboxes(this,'inputId')"/>
+                        </apex:facet>
+                            <apex:inputCheckbox value="{!aWrapp.isChecked}" id="inputId"/>
+                    </apex:column>
+                    <apex:column value="{!aWrapp.anOpportunity.Name}"></apex:column>
+                    <apex:column value="{!aWrapp.anOpportunity.StageName}"></apex:column>
+                </apex:pageBlockTable>
+            </apex:form>
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+</apex:page>
